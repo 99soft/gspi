@@ -23,7 +23,7 @@
 
 Welcome to GSPI!
 
-  GSPI is a small collection of reusable tools for <Google Guice> to make
+  GSPI is a Java5 compatible small collection of reusable tools for <Google Guice> to make
   easier the integration with the Service Provider Interface pattern.
 
 Before starting
