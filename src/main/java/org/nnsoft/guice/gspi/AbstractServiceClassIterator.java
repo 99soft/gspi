@@ -23,6 +23,11 @@ import java.util.NoSuchElementException;
 
 import com.google.inject.ProvisionException;
 
+/**
+ * Lazy-loading iterator over the discovered classes.
+ *
+ * @param <S> The service type being loaded.
+ */
 abstract class AbstractServiceClassIterator<S>
     implements Iterator<Class<? extends S>>
 {
@@ -37,16 +42,31 @@ abstract class AbstractServiceClassIterator<S>
      */
     private final ClassLoader classLoader;
 
+    /**
+     * The pending providers Class names.
+     */
     private Iterator<String> pending = null;
 
+    /**
+     * The reference to the next provider Class name.
+     */
     private String nextName = null;
 
+    /**
+     * Creates a new Provider classes Iterator.
+     *
+     * @param service The Service being loaded.
+     * @param classLoader The ClassLoader used to load Provider classes.
+     */
     public AbstractServiceClassIterator( Class<S> service, ClassLoader classLoader )
     {
         this.service = service;
         this.classLoader = classLoader;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final boolean hasNext()
     {
@@ -68,10 +88,23 @@ abstract class AbstractServiceClassIterator<S>
         return true;
     }
 
+    /**
+     * Checks if there are still providers names to be loaded.
+     *
+     * @return true if there are still providers names to be loaded, false otherwise.
+     */
     protected abstract boolean hasMorePendingNames();
 
+    /**
+     * Returns the iterator over next pending Providers names.
+     *
+     * @return the iterator over next pending Providers names.
+     */
     protected abstract Iterator<String> getPendingNames();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final Class<? extends S> next()
     {
@@ -102,6 +135,9 @@ abstract class AbstractServiceClassIterator<S>
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void remove()
     {

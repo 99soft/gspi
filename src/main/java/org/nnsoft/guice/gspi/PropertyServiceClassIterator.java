@@ -19,16 +19,37 @@ package org.nnsoft.guice.gspi;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
+/**
+ * Lazy-loading iterator over the discovered classes defined in the Java System Properties.
+ *
+ * @param <S> The service type being loaded.
+ */
 final class PropertyServiceClassIterator<S>
     extends AbstractServiceClassIterator<S>
 {
 
+    /**
+     * The service names separator.
+     */
     private static final String DEFAULT_SEPARATOR = ",";
 
+    /**
+     * The Provider names defined in the Service as Java System Property.
+     */
     private final String systemServiceNames;
 
+    /**
+     * Flag to mark that iterator has already been consumed.
+     */
     private boolean consumed = false;
 
+    /**
+     * Creates a new Provider classes Iterator.
+     *
+     * @param service The Service being loaded.
+     * @param classLoader The ClassLoader used to load Provider classes.
+     * @param systemServiceNames the Provider names defined in the Service as Java System Property.
+     */
     public PropertyServiceClassIterator( Class<S> service, ClassLoader classLoader, String systemServiceNames )
     {
         super( service, classLoader );

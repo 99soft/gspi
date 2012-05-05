@@ -27,31 +27,56 @@ import com.google.inject.Module;
 import com.google.inject.ProvisionException;
 
 /**
- *
+ * Loads Google Guice {@code Module} instances using the SPI pattern.
  */
 public final class GuiceServiceLoader
 {
 
+    /**
+     * Loads all Google Guice {@code Module} found in the Context {@code ClassLoader}.
+     *
+     * @return all Google Guice {@code Module} found in the Context {@code ClassLoader}.
+     */
     public static Iterable<? extends Module> loadModules()
     {
         return loadModules( currentThread().getContextClassLoader() );
     }
 
+    /**
+     * Loads all Google Guice {@code Module} found in the given {@code ClassLoader}.
+     *
+     * @param classLoader The {@code ClassLoader} used to load {@code Module} instances.
+     * @return all Google Guice {@code Module} found in the given {@code ClassLoader}.
+     */
     public static Iterable<? extends Module> loadModules( ClassLoader classLoader )
     {
         return wrap( load( Module.class, classLoader ).iterator() );
     }
 
+    /**
+     * Loads all Google Guice {@code Module} found in the extension {@code ClassLoader}.
+     *
+     * @return all Google Guice {@code Module} found in the extension {@code ClassLoader}.
+     */
     public static Iterable<? extends Module> loadInstalledModules()
     {
         return wrap( loadInstalled( Module.class ).iterator() );
     }
 
+    /**
+     * Wraps the {@code Module} types iterator in a lazy-loader {@code Module} instances iterator.
+     *
+     * @param moduleTypesIterator the {@code Module} types iterator has to be wrapped.
+     * @return a lazy-loader {@code Module} instances iterator.
+     */
     private static Iterable<Module> wrap( final Iterator<Class<? extends Module>> moduleTypesIterator )
     {
         return new Iterable<Module>()
         {
 
+            /**
+             * {@inheritDoc}
+             */
             public Iterator<Module> iterator()
             {
                 return new ModulesIterator( moduleTypesIterator );
@@ -60,12 +85,24 @@ public final class GuiceServiceLoader
         };
     }
 
+    /**
+     * Lazy-loader {@code Module} instances iterator.
+     */
     private static final class ModulesIterator
         implements Iterator<Module>
     {
 
+        /**
+         * The adapted {@code Module} types iterator.
+         */
         private final Iterator<Class<? extends Module>> moduleTypesIterator;
 
+        /**
+         * Creates a new lazy-loader {@code Module} instances iterator
+         * wrapping a {@code Module} types iterator..
+         *
+         * @param moduleTypesIterator The adapted {@code Module} types iterator.
+         */
         public ModulesIterator( Iterator<Class<? extends Module>> moduleTypesIterator )
         {
             this.moduleTypesIterator = moduleTypesIterator;

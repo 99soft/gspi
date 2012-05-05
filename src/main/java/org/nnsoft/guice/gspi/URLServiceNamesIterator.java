@@ -42,6 +42,9 @@ final class URLServiceNamesIterator<S>
      */
     private static final Charset UTF_8 = forName( "UTF-8" );
 
+    /**
+     * The SPI files to be loaded.
+     */
     private final Enumeration<URL> serviceResources;
 
     /**
@@ -76,6 +79,8 @@ final class URLServiceNamesIterator<S>
 
     /**
      * Parse the content of the given URL as a provider-configuration file.
+     *
+     * Method taken from Apache Commons-Digester.
      *
      * @param url the URL naming the configuration file to be parsed.
      * @return a (possibly empty) iterator that will yield the provider-class names in the given configuration file that

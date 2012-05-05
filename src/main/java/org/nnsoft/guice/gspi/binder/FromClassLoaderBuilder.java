@@ -16,10 +16,19 @@ package org.nnsoft.guice.gspi.binder;
  *  limitations under the License.
  */
 
+/**
+ * Allows specify the {@code ClassLoader} used to load the Service in the binding.
+ */
 public interface FromClassLoaderBuilder
     extends AnnotatedServiceBuilder
 {
 
+    /**
+     * Specifies the {@code ClassLoader} used to load the Service in the binding.
+     *
+     * @param classLoader the {@code ClassLoader} used to load the Service in the binding.
+     * @return the chained EDSL builder.
+     */
     AnnotatedServiceBuilder fromClassLoader( ClassLoader classLoader );
 
 }

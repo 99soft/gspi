@@ -18,12 +18,27 @@ package org.nnsoft.guice.gspi.binder;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * Allows specify Service annotation in the binding.
+ */
 public interface AnnotatedServiceBuilder
     extends ServiceBuilder
 {
 
+    /**
+     * Specifies Service annotation type in the binding.
+     *
+     * @param annotationType the Service annotation type in the binding.
+     * @return the chained EDSL builder.
+     */
     ServiceBuilder annotatedWith( Class<? extends Annotation> annotationType );
 
+    /**
+     * Specifies Service annotation in the binding.
+     *
+     * @param annotation the Service annotation in the binding.
+     * @return the chained EDSL builder.
+     */
     ServiceBuilder annotatedWith( Annotation annotation );
 
 }

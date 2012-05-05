@@ -36,16 +36,31 @@ import com.google.inject.Key;
 import com.google.inject.ProvisionException;
 import com.google.inject.multibindings.Multibinder;
 
+/**
+ * A Google Guice {@code Module} to simplify the task of
+ * binding Services to Providers using the SPI pattern.
+ */
 public abstract class ServiceLoaderModule
     extends AbstractModule
 {
 
+    /**
+     * EDSL to bind Services to Providers using the SPI pattern.
+     *
+     * @param service The type of the service to be loaded.
+     * @return the chained EDSL builder.
+     */
     protected final <S> FromClassLoaderBuilder bindService( Class<S> service )
     {
         checkArgument( service != null, "Impossible to bind null service class!" );
         return new DefaultServiceBuilder<S>( service, binder() );
     }
 
+    /**
+     * EDSL for SPI implementation.
+     *
+     * @param <S> The type of the service to be loaded.
+     */
     private static final class DefaultServiceBuilder<S>
         implements FromClassLoaderBuilder
     {
@@ -67,18 +82,27 @@ public abstract class ServiceLoaderModule
             classLoader = currentThread().getContextClassLoader();
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public ServiceBuilder annotatedWith( Class<? extends Annotation> annotationType )
         {
             bindingKey = get( service, annotationType );
             return this;
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public ServiceBuilder annotatedWith( Annotation annotation )
         {
             bindingKey = get( service, annotation );
             return this;
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public AnnotatedServiceBuilder fromClassLoader( ClassLoader classLoader )
         {
             checkArgument( classLoader != null,
@@ -87,6 +111,9 @@ public abstract class ServiceLoaderModule
             return this;
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public void loadingFirstService()
         {
             Iterator<Class<? extends S>> servicesIterator = load( service, classLoader ).iterator();
@@ -97,6 +124,9 @@ public abstract class ServiceLoaderModule
             binder.bind( bindingKey ).to( servicesIterator.next() );
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public void loadingAllServices()
         {
             Multibinder<S> multiBinder;
