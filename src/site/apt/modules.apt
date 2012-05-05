@@ -47,8 +47,6 @@ import static com.google.inject.Guice.createInjector;
 
 import com.google.inject.Injector;
 
-import com.googlecode.rocoto.configuration.ConfigurationModule;
-
 ...
 
 Injector injector = createInjector( loadModules() );
