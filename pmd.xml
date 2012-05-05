@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2012-05-05T23:27:28.307">
+<file name="/Users/simonetripodi/Documents/workspace/gspi/target/checkout/src/main/java/org/nnsoft/guice/gspi/ServiceLoader.java">
+<violation beginline="1" endline="152" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.nnsoft.guice.gspi" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/Users/simonetripodi/Documents/workspace/gspi/target/checkout/src/main/java/org/nnsoft/guice/gspi/ServiceLoaderModule.java">
+<violation beginline="1" endline="156" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.nnsoft.guice.gspi" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/Users/simonetripodi/Documents/workspace/gspi/target/checkout/src/main/java/org/nnsoft/guice/gspi/URLServiceNamesIterator.java">
+<violation beginline="128" endline="131" begincolumn="9" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.nnsoft.guice.gspi" class="URLServiceNamesIterator" method="parseServiceFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="149" endline="152" begincolumn="13" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.nnsoft.guice.gspi" class="URLServiceNamesIterator" method="closeQuietly" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

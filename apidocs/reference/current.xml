@@ -1,0 +1,179 @@
+<api>
+<package name="org.nnsoft.guice.gspi"
+>
+<class name="GuiceServiceLoader"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="GuiceServiceLoader"
+ type="org.nnsoft.guice.gspi.GuiceServiceLoader"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="loadInstalledModules"
+ return="java.lang.Iterable&lt;? extends com.google.inject.Module&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="loadModules"
+ return="java.lang.Iterable&lt;? extends com.google.inject.Module&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="loadModules"
+ return="java.lang.Iterable&lt;? extends com.google.inject.Module&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="classLoader" type="java.lang.ClassLoader">
+</parameter>
+</method>
+</class>
+<class name="ServiceLoaderModule"
+ extends="com.google.inject.AbstractModule"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ServiceLoaderModule"
+ type="org.nnsoft.guice.gspi.ServiceLoaderModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="bindService"
+ return="org.nnsoft.guice.gspi.binder.FromClassLoaderBuilder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="service" type="java.lang.Class&lt;S&gt;">
+</parameter>
+</method>
+</class>
+</package>
+<package name="org.nnsoft.guice.gspi.binder"
+>
+<interface name="AnnotatedServiceBuilder"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.nnsoft.guice.gspi.binder.ServiceBuilder">
+</implements>
+<method name="annotatedWith"
+ return="org.nnsoft.guice.gspi.binder.ServiceBuilder"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="annotationType" type="java.lang.Class&lt;? extends java.lang.annotation.Annotation&gt;">
+</parameter>
+</method>
+<method name="annotatedWith"
+ return="org.nnsoft.guice.gspi.binder.ServiceBuilder"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="annotation" type="java.lang.annotation.Annotation">
+</parameter>
+</method>
+</interface>
+<interface name="FromClassLoaderBuilder"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.nnsoft.guice.gspi.binder.AnnotatedServiceBuilder">
+</implements>
+<method name="fromClassLoader"
+ return="org.nnsoft.guice.gspi.binder.AnnotatedServiceBuilder"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="classLoader" type="java.lang.ClassLoader">
+</parameter>
+</method>
+</interface>
+<interface name="ServiceBuilder"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="loadingAllServices"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="loadingFirstService"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+</package>
+</api>

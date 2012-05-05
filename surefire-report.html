@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Home</title>
+    <title>Surefire Report</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -13,7 +13,6 @@
     <script type="text/javascript" src="./js/apache-maven-fluido.min.js"></script>
 
     
-      <meta name="author" content="The 99 Software Foundation" />
     <meta name="Date-Revision-yyyymmdd" content="20120505" />
     <meta http-equiv="Content-Language" content="en" />
     
@@ -56,8 +55,8 @@
                                    <h5>99soft :: G-SPI</h5>
                   <ul>
                   <li class="none">
-            <strong>Home</strong>
-          </li>
+                          <a href="index.html" title="Home">Home</a>
+            </li>
                   <li class="none">
                           <a href="modules.html" title="Load Modules">Load Modules</a>
             </li>
@@ -163,15 +162,23 @@
       <div id="bodyColumn" class="content">
         <div id="contentBox">
                               
-          <!--  --><!-- Copyright 2012 The 99 Software Foundation --><!--  --><!-- Licensed under the Apache License, Version 2.0 (the "License"); --><!-- you may not use this file except in compliance with the License. --><!-- You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, software --><!-- distributed under the License is distributed on an "AS IS" BASIS, --><!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. --><!-- See the License for the specific language governing permissions and --><!-- limitations under the License. --><!--  --><div class="section"><h2>Welcome to GSPI!<a name="Welcome_to_GSPI"></a></h2><p>GSPI is a Java5 compatible small collection of reusable tools for <i>Google Guice</i> to make easier the integration with the Service Provider Interface pattern.</p><p>It tries to take the best from the past experiences in <a class="externalLink" href="http://commons.apache.org/discovery">Apache Commons Discovery</a> and <a class="externalLink" href="http://99soft.github.com/backport-spi/">Backport SPI</a>.</p></div><div class="section"><h2>Before starting<a name="Before_starting"></a></h2><p>GSPI is available on the Maven Central repo, you just need to add the dependency below in your <tt>pom.xml</tt> file:</p><div class="source"><pre class="prettyprint">&lt;dependencies&gt;
-  ...
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.99soft.guice&lt;/groupId&gt;
-    &lt;artifactId&gt;gspi&lt;/artifactId&gt;
-    &lt;version&gt;0.1&lt;/version&gt;
-  &lt;/dependency&gt;
-  ...
-&lt;/dependencies&gt;</pre></div></div><div class="section"><h2>Acknowledgements<a name="Acknowledgements"></a></h2><p>This work is dedicated to our city, L'Aquila, destroyed by a terrible earthquake the 6th April, 2009... That day more than 300 people were killed because buildings collapsed after a magnitudo 6.3 earthquake at 3:32 am.</p><p>We'll never forget that episode.</p></div>
+          <script type="text/javascript">
+//<![CDATA[
+function toggleDisplay(elementId) {
+ var elm = document.getElementById(elementId + 'error');
+ if (elm && typeof elm.style != "undefined") {
+ if (elm.style.display == "none") {
+ elm.style.display = "";
+ document.getElementById(elementId + 'off').style.display = "none";
+ document.getElementById(elementId + 'on').style.display = "inline";
+ } else if (elm.style.display == "") { elm.style.display = "none";
+ document.getElementById(elementId + 'off').style.display = "inline";
+ document.getElementById(elementId + 'on').style.display = "none";
+ } 
+ } 
+ }
+//]]>
+</script><div class="section"><h2>Surefire Report<a name="Surefire_Report"></a></h2></div><div class="section"><h2>Summary<a name="Summary"></a></h2><a name="Summary"></a><p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br /><table border="0" class="zebra-striped"><tr class="a"><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class="b"><td>3</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0.352</td></tr></table><br /><p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div><div class="section"><h2>Package List<a name="Package_List"></a></h2><a name="Package_List"></a><p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br /><table border="0" class="zebra-striped"><tr class="a"><th>Package</th><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class="b"><td><a href="#org.nnsoft.guice.gspi">org.nnsoft.guice.gspi</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0.352</td></tr></table><br /><p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p><div class="section"><h3>org.nnsoft.guice.gspi<a name="org.nnsoft.guice.gspi"></a></h3><a name="org.nnsoft.guice.gspi"></a><table border="0" class="zebra-striped"><tr class="a"><th></th><th>Class</th><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class="b"><td><a href="#org.nnsoft.guice.gspiFromSystemPropertiesTestCase"><img src="images/icon_success_sml.gif" alt="" /></a></td><td><a href="#org.nnsoft.guice.gspiFromSystemPropertiesTestCase">FromSystemPropertiesTestCase</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0.336</td></tr><tr class="a"><td><a href="#org.nnsoft.guice.gspiGuiceServiceLoaderTestCase"><img src="images/icon_success_sml.gif" alt="" /></a></td><td><a href="#org.nnsoft.guice.gspiGuiceServiceLoaderTestCase">GuiceServiceLoaderTestCase</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0.012</td></tr><tr class="b"><td><a href="#org.nnsoft.guice.gspiServiceLoaderModuleTestCase"><img src="images/icon_success_sml.gif" alt="" /></a></td><td><a href="#org.nnsoft.guice.gspiServiceLoaderModuleTestCase">ServiceLoaderModuleTestCase</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0.004</td></tr></table></div><br /></div><div class="section"><h2>Test Cases<a name="Test_Cases"></a></h2><a name="Test_Cases"></a><p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><div class="section"><h3>FromSystemPropertiesTestCase<a name="FromSystemPropertiesTestCase"></a></h3><a name="org.nnsoft.guice.gspiFromSystemPropertiesTestCase"></a><table border="0" class="zebra-striped"><tr class="a"><td><img src="images/icon_success_sml.gif" alt="" /></td><td>injectedServicesCaughtFromSystemProperties</td><td>0.336</td></tr></table></div><div class="section"><h3>GuiceServiceLoaderTestCase<a name="GuiceServiceLoaderTestCase"></a></h3><a name="org.nnsoft.guice.gspiGuiceServiceLoaderTestCase"></a><table border="0" class="zebra-striped"><tr class="b"><td><img src="images/icon_success_sml.gif" alt="" /></td><td>verifyRightModulesWereLoaded</td><td>0.012</td></tr></table></div><div class="section"><h3>ServiceLoaderModuleTestCase<a name="ServiceLoaderModuleTestCase"></a></h3><a name="org.nnsoft.guice.gspiServiceLoaderModuleTestCase"></a><table border="0" class="zebra-striped"><tr class="a"><td><img src="images/icon_success_sml.gif" alt="" /></td><td>singleServiceInjection</td><td>0.004</td></tr></table></div><br /></div>
                   </div>
       </div>
     </div>
