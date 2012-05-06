@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Issue Tracking</title>
+    <title>Home</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -13,6 +13,7 @@
     <script type="text/javascript" src="./js/apache-maven-fluido.min.js"></script>
 
     
+      <meta name="author" content="Simple Configuration" />
     <meta name="Date-Revision-yyyymmdd" content="20120506" />
     <meta http-equiv="Content-Language" content="en" />
     
@@ -61,8 +62,8 @@
                           <a href="modules.html" title="Load Modules">Load Modules</a>
             </li>
                   <li class="none">
-                          <a href="services.html" title="Bind Services">Bind Services</a>
-            </li>
+            <strong>Bind Services</strong>
+          </li>
                   <li class="none">
                           <a href="apidocs/index.html" title="API doc">API doc</a>
             </li>
@@ -165,7 +166,98 @@
       <div id="bodyColumn" class="content">
         <div id="contentBox">
                               
-          <div class="section"><h2>Overview<a name="Overview"></a></h2><a name="Overview"></a><p>This project uses GitHub Issue Management to manage its issues.</p></div><div class="section"><h2>Issue Tracking<a name="Issue_Tracking"></a></h2><a name="Issue_Tracking"></a><p>Issues, bugs, and feature requests should be submitted to the following issue tracking system for this project.</p><div class="source"><pre class="prettyprint"><a class="externalLink" href="https://github.com/99soft/Rocoto/issues">https://github.com/99soft/Rocoto/issues</a></pre></div></div>
+          <!--  --><!-- Copyright 2012 The 99 Software Foundation --><!--  --><!-- Licensed under the Apache License, Version 2.0 (the "License"); --><!-- you may not use this file except in compliance with the License. --><!-- You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, software --><!-- distributed under the License is distributed on an "AS IS" BASIS, --><!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. --><!-- See the License for the specific language governing permissions and --><!-- limitations under the License. --><!--  --><div class="section"><h2>Binding Services<a name="Binding_Services"></a></h2><p>The <tt>org.nnsoft.guice.gspi.ServiceLoaderModule</tt> provides APIs to bind Services to Provided discovered via SPI pattern.</p><p>Given an hipotetycal <tt>FooService</tt>:</p><div class="source"><pre class="prettyprint">package com.acme;
+
+public interface FooService
+{
+
+    void doSomething();
+
+}</pre></div><p>With related implementations:</p><div class="source"><pre class="prettyprint">package com.acme.first;
+
+public final class FooServiceImpl1
+    implements FooService
+{
+
+    @Override
+    public void doSomething()
+    {
+        // ...
+    }
+
+}</pre></div><p>and</p><div class="source"><pre class="prettyprint">package com.acme.second;
+
+public final class FooServiceImpl2
+    implements FooService
+{
+
+    @Override
+    public void doSomething()
+    {
+        // ...
+    }
+
+}</pre></div><p>Then define the SPI in <tt>META-INF/services/com.acme.FooService</tt> file(s):</p><div><pre># created by Jack Bauer in less than 24h
+
+com.acme.first.FooServiceImpl1
+com.acme.second.FooServiceImpl2   # EOL comment
+
+# comments and blank lines supported
+
+
+#</pre></div><p>Then users can:</p><ul><li>Bind the Service to the first discovered Provider<div class="source"><pre class="prettyprint">import static com.google.inject.Guice.createInjector;
+
+import com.acme.FooService;
+import com.google.inject.Injector;
+
+import org.nnsoft.guice.gspi.ServiceLoaderModule;
+
+...
+
+Injector injector = createInjector( new ServiceLoaderModule()
+{
+
+    @Override
+    protected void configure()
+    {
+        bindService( FooService.class ).loadingFirstService();
+    }
+
+} );</pre></div><p>and the require its injection somewhere else:</p><div class="source"><pre class="prettyprint">public class PowerTool
+{
+
+    @Inject
+    private FooService fooService;
+
+    // setters and algorithms omitted
+
+}</pre></div></li><li>Bind the Service to all discovered Provider<div class="source"><pre class="prettyprint">import static com.google.inject.Guice.createInjector;
+
+import com.acme.FooService;
+import com.google.inject.Injector;
+
+import org.nnsoft.guice.gspi.ServiceLoaderModule;
+
+...
+
+Injector injector = createInjector( new ServiceLoaderModule()
+{
+
+    @Override
+    protected void configure()
+    {
+        bindService( FooService.class ).loadingAllService();
+    }
+
+} );</pre></div><p>and the require their injection somewhere else:</p><div class="source"><pre class="prettyprint">public class SuperPowerTool
+{
+
+    @Inject
+    private Set&lt;FooService&gt; fooService;
+
+    // setters and algorithms omitted
+
+}</pre></div><p>Eh?!? Just that?!? YES!!! :)</p></li></ul></div><div class="section"><h2>Loading Services from SystemProperties<a name="Loading_Services_from_SystemProperties"></a></h2><p>Alternatively, SPIs can be specified via <i>Java System properties</i>:</p><div><pre>java -Dcom.acme.FooService=com.acme.first.FooServiceImpl1,com.acme.second.FooServiceImpl2</pre></div><p>Where <b>,</b> is the separator character between Providers.</p><div class="section"><h3>Note<a name="Note"></a></h3><p>If SPIs will be found in <i>Java System properties</i>, <tt>META-INF/services/com.acme.FooService</tt> file(s) will be ignored</p></div></div>
                   </div>
       </div>
     </div>
